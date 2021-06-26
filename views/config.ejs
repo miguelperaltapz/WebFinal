@@ -1,0 +1,70 @@
+<% if (mode == 'dark') { %>
+
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Traductor</title>
+    
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
+    
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Custom styles for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+        
+        <link href="/css/index.css" rel="stylesheet">
+    
+      </head>
+    
+    
+      <body>
+  <%  } else {  %>
+  
+    <%- include ("./partials/_header") %>
+  
+  <%  }    %>
+
+<main class = "container">
+    <form class="form-signin" action="/config/<%= id%>" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal">User configuration</h1>
+        
+        <label for="inputEmail" class="">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" readonly value= "<%= email%>">
+        <!--
+        <label for="inputPassword" class="">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" value= "<%= password%>">
+        -->
+        <label for="inputName" class="">Name</label>
+        <input type="name" id="inputName" class="form-control" name="name" placeholder="Name" value= "<%= name%>">
+
+        <label for="inputLastName" class="">Last Name</label>
+        <input type="lastname" id="inputLastName" class="form-control" name="lastname" placeholder="Lastname" value= "<%= lastname%>">
+        <!--
+        <label for="inputMode" class="">Mode</label>
+        <input type="mode" id="inputMode" class="form-control" name="mode" placeholder="Mode" value= "<%= mode%>">
+        -->
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Theme</label>
+            <select class="form-control" name="mode">
+            <% if (mode == 'light') { %>
+            <option selected>light</option>
+            <option>dark</option>
+            <% } else {%>
+            <option>light</option>
+            <option selected>dark</option>
+            <% } %>
+            </select>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
+        <a href="/delete/<%= id%>" class="btn btn-lg btn-secondary btn-block" role="button">Delete User</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+    </form>
+</main>
+
+<%- include ("./partials/_footer") %>
